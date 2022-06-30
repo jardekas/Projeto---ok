@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">Aula Rotas</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/home"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="pessoa"
+            >Pessoa</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/formulario"
+            >Formulário</a
+          >
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/curso"
+          >Curso</a
+        >
+      </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container mt-3">
+  <router-outlet></router-outlet>
+</div>

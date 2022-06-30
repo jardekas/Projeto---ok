@@ -1,0 +1,21 @@
+<label
+  [class.required]="isRequired()"
+  *ngIf="label"
+  for="{{ controlName }}"
+  class="form-label"
+  >{{ label }}</label
+>
+<input
+  [mask]="mask"
+  [showMaskTyped]="true"
+  [id]="controlName"
+  [formControl]="formControl"
+  [class.is-valid]="formControl.dirty && formControl.valid"
+  [class.is-invalid]="formControl.dirty && formControl.invalid"
+  [type]="type"
+  class="form-control"
+  [placeholder]="placeholder"
+/>
+<div class="invalid-feedback">
+  {{ getErrorMessage() }}
+</div>
