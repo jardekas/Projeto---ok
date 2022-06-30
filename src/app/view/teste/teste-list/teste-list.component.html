@@ -1,0 +1,43 @@
+<table class="table">
+<thead>
+  <tr>
+    <th scope="col">Título</th>
+    <th scope="col">Descrição</th>
+    <th scope="col">Ações</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let teste of testes; let idx = index">
+    <td>{{ teste.titulo }}</td>
+    <td>{{ teste.descricao }}</td>
+    <td>
+      <button
+        [routerLink]="['/teste/responder', teste.id]"
+        class="border-0 bg-transparent"
+      >
+        <i class="bi bi-eye"></i>
+      </button>
+      <button
+        [routerLink]="['/teste', teste.id]"
+        class="border-0 bg-transparent"
+      >
+        <i class="bi bi-pencil"></i>
+      </button>
+      <button
+        (click)="remover(teste.id)"
+        class="border-0 bg-transparent"
+      >
+        <i class="bi bi-trash"></i>
+      </button>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<button
+type="button"
+class="btn btn-primary mt-2"
+routerLink="/teste/novo"
+>
+Novo
+</button>

@@ -9,6 +9,9 @@ import { FormularioFormComponent } from './view/formulario/formulario-form/formu
 import { FormularioViewComponent } from './view/formulario/formulario-view/formulario-view.component';
 import { CursoListComponent } from './view/curso/curso-list/curso-list.component';
 import { CursoFormComponent } from './view/curso/curso-form/curso-form.component';
+import { TesteListComponent } from './view/teste/teste-list/teste-list.component';
+import { TesteFormComponent } from './view/teste/teste-form/teste-form.component';
+import { TesteViewComponent } from './view/teste/teste-view/teste-view.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,6 +20,9 @@ const routes: Routes = [
   { path: 'formulario', component: FormularioListComponent },
   { path: 'formulario/:id', component: FormularioFormComponent },
   { path: 'formulario/responder/:id', component: FormularioViewComponent },
+  { path: 'teste', component: TesteListComponent },
+  { path: 'teste/:id', component: TesteFormComponent },
+  { path: 'teste/responder/:id', component: TesteViewComponent },
   { path: 'curso', component: CursoListComponent },
   { path: 'curso/:id', component: CursoFormComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

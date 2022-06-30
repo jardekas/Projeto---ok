@@ -20,6 +20,9 @@ import { FormularioFormComponent } from './view/formulario/formulario-form/formu
 import { FormularioViewComponent } from './view/formulario/formulario-view/formulario-view.component';
 import { CursoListComponent } from './view/curso/curso-list/curso-list.component';
 import { CursoFormComponent } from './view/curso/curso-form/curso-form.component';
+import { TesteListComponent } from './view/teste/teste-list/teste-list.component';
+import { TesteFormComponent } from './view/teste/teste-form/teste-form.component';
+import { TesteViewComponent } from './view/teste/teste-view/teste-view.component';
 
 @NgModule({
   imports: [
@@ -45,6 +48,9 @@ import { CursoFormComponent } from './view/curso/curso-form/curso-form.component
     FormularioViewComponent,
     CursoListComponent,
     CursoFormComponent,
+    TesteListComponent,
+    TesteFormComponent,
+    TesteViewComponent,
   ],
   bootstrap: [AppComponent],
 })

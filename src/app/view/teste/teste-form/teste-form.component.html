@@ -1,0 +1,149 @@
+<div class="row">
+<div class="col-9"><h3>Cadastro de Formulário</h3></div>
+<div class="col-3">
+  <button
+    [disabled]="testeFormGroup.invalid"
+    (click)="editing ? atualizar() : salvar()"
+    type="button"
+    class="btn btn-dark"
+  >
+    Salvar
+  </button>
+</div>
+</div>
+<hr />
+
+<div [formGroup]="testeFormGroup">
+<div class="row g-3">
+  <div class="col-sm-6">
+    <app-input type="text" label="Título" controlName="titulo"></app-input>
+  </div>
+  <div class="col-sm-6">
+    <app-input
+      type="text"
+      label="Descrição"
+      controlName="descricao"
+    ></app-input>
+  </div>
+</div>
+</div>
+
+<div class="mt-3" [formGroup]="questaoFormGroup">
+<h5>Questões</h5>
+<hr />
+
+<div class="row g-0">
+  <div
+    *ngFor="
+      let questao of testeFormGroup.get('questoes').value;
+      let index = index
+    "
+    class="card border-dark mb-3 mx-3"
+    style="max-width: 13rem;"
+  >
+    <div class="card-header d-flex justify-content-between align-items-start">
+      {{ questao.tipo | uppercase }}
+      <button
+        (click)="
+          testeFormGroup.get('questoes').value.splice(index, 1);
+          testeFormGroup.get('questoes').updateValueAndValidity()
+        "
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+      ></button>
+    </div>
+    <div class="card-body text-dark">
+      <h5 class="card-title">{{ questao.titulo }}</h5>
+      <p *ngIf="questao.opcoes.length > 0" class="card-text">
+        <strong>Opções:</strong>
+        <ng-container *ngFor="let opcao of questao.opcoes; let last = last">
+          {{ opcao.valor }}
+          <ng-container *ngIf="!last">,</ng-container>
+        </ng-container>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-sm-12">
+    <app-input type="text" label="Titulo" controlName="titulo"></app-input>
+  </div>
+  <div class="col-8 col-lg-3">
+    <label for="tipo" class="form-label required">Tipo</label>
+    <select id="tipo" formControlName="tipo" class="form-select">
+      <option
+        *ngFor="let tipo of ['text', 'dropdown', 'checkbox']"
+        value="{{ tipo }}"
+      >
+        {{ tipo }}
+      </option>
+    </select>
+  </div>
+  <div class="col-4">
+    <label></label>
+    <div class="form-check mt-3">
+      <input
+        formControlName="requerido"
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckDefault"
+      />
+      <label class="form-check-label" for="flexCheckDefault">
+        Requerido
+      </label>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="mt-3">
+<h6>Opções</h6>
+
+<div [formGroup]="opcoesFormGroup">
+  <div class="row g-3">
+    <div class="col-sm-12 input-group">
+      <input
+        formControlName="valor"
+        type="text"
+        class="form-control"
+        placeholder="Valor"
+      />
+      <button
+        (click)="addOpcao()"
+        class="btn btn-secondary"
+        type="button"
+        id="button-addon2"
+      >
+        <i class="bi bi-plus"></i>
+      </button>
+    </div>
+  </div>
+
+  <ol class="list-group mt-3 mb-3">
+    <li
+      *ngFor="
+        let opcao of questaoFormGroup.get('opcoes').value;
+        let index = index
+      "
+      class="list-group-item d-flex justify-content-between align-items-start"
+    >
+      {{ index + 1 }} - {{ opcao.valor }}
+      <button
+        (click)="questaoFormGroup.get('opcoes').value.splice(index, 1)"
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+      ></button>
+    </li>
+  </ol>
+</div>
+</div>
+
+<div class="mb-3">
+<app-button [disabled]="questaoFormGroup.invalid" (click)="addQuestao()"
+  >Adicionar</app-button
+>
+</div>
